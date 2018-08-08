@@ -1,0 +1,17 @@
+\section{Aproximación de Diferenciaciones}
+\subsection{Hacia adelante}
+ $$
+  f'(x_i) = \frac {f(x_{i+1}) - f(x_i)} {x_{i+1} -x_i} + O(x_{i+1} -x_i)
+ $$
+ \paragraph{Utilizando}
+ $$
+ 	 f'(x_i) = \frac{\triangle f_i}{h} +  O(x_{i+1} -x_i)
+ $$ Con h el tamaño el paso de incremento.
+\subsection{Hacia Atrás}
+$$
+  f'(x_i) = \frac {f(x_{i}) - f(x_{i-1})} {x_{i} -x_{i-1}} + O(x_{i} -x_(i-1))
+ $$
+\subsection{Centro}
+$$
+ f'(x_i) = \frac {f(x_{i+1}) - f(x_{i-1})} {2h} + O(h^2)
+$$

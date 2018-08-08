@@ -1,0 +1,37 @@
+\section {Representaciones numéricas}
+\subsection{Números enteros sin signo de N bits}
+ $$
+  x = \sum_{n=0}^{N-1} b_n2^{n}
+ $$ Donde  $b_n \in \{ 0,1 \} $ y n es el n-ésimo digito de x, el rango representable es de  0 hasta $ 2^N -1 $
+\subsection{Número coma fija sin signo de N bits}
+Donde  $b_n \in \{ 0,1 \} $ y n es el n-ésimo digito de x, M es una constante de normalización, usualmente igual a $ 2^m $
+$$
+	 x = \frac{1}{M = 2^m}\sum_{n=0}^{N-1} b_n2^{n}	
+$$ Donde  m = es el número de Bits de la parte fraccionaria. Por tanto se representa el número como si no fuara fraccionario y luego se divide entre M.
+
+\subsection{Numero entero con signo  de N bits en complemento a dos : }
+$$
+ x = -b_{N-1}2^{N-1} +  \sum_{n =0}^{N-2} b_n2^n
+$$ Lo que permite representar números de $ -2^{N-1}$ hasta $ 2^{N-1} -1  $ El signo está definido por el bit más significativo.
+\subsection{ Coma fija con signo }
+$$
+ x = \frac{1}{M} = \big( -b_{N-1}2^{N-1} +  \sum_{n =0}^{N-2} b_n2^n  \big) 
+$$
+\subsection {Alternativa  Caso fraccionario}
+$$
+  x = -b_{N-1}+ \sum_{n=0}^{N-2} b_n2^{n-N+1}
+$$
+\subsection{ Coma flotante}
+\begin{itemize}
+\item Bit de signo s
+\item Exponente e con E bits
+\item Mantisa Normalizada (fraccionaria) de M bits
+\end{itemize}
+$$
+ x = \big(  -1 \big)^s X \big(1,\big) X 2^{e - bias}
+$$ En donde  bias está definido como: $ bias = 2^{E-1} -1 $
+\subsection{ Epsilon de Formato}
+$$
+ \epsilon = >= \frac{|\triangle x|}{|x| } 
+$$
+En caso de que use redondeo $\frac {\epsilon}{2} = >= \frac{|\triangle x|}{|x| } $

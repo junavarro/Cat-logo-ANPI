@@ -1,17 +1,34 @@
-\documentclass[a4paper,12pt,twoside]{book}
+\documentclass[a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{fancyhdr}
 \usepackage{natbib}
 \usepackage{graphicx}
+ 
+\usepackage{subfiles}
+ 
+\usepackage{blindtext}
 \title{Catálogo ANPI}
 \author{Juan Esteban Navarro Camacho }
 \date{August 2018}
+
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{Tecnològico de Costa Rica}
+\fancyhead[LE,RO]{Tecnológico de Costa Rica}
 \fancyhead[RE,LO]{ANPI CheatSheet}
 \fancyfoot[CE,CO]{\leftmark}
 \fancyfoot[LE,RO]{\thepage}
+\usepackage{textcomp}
+\usepackage{multicol}
+\usepackage{comment}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{mathtools}
  
 
 \begin{document}
@@ -19,8 +36,12 @@
 \section{Introducción}
 El siguiente formulario representa los artefactos necesarios de consulta para el curso de Análisis Numérico para la Ingeniería.
 
+\begin{multicols}{2}
+\subfile{catalog1/errores-medicion.tex}
+\subfile{catalog1/representaciones-numericas.tex}
+\subfile{catalog1/diferenciacion.tex}
 
-
+\end{multicols}
 \bibliographystyle{plain}
 \bibliography{references}
 \end{document}

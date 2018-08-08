@@ -1,0 +1,684 @@
+\section{Búsqueda de raíces}
+\subsection{Bisección}
+	Partir de la suposición de el cero se encuentra en un cambio de signo, de ahí: 
+    $$f(X_l)f(X_U)<0$$
+    Donde Xu es el valor positivo y Xl el valor negativo.
+    La condición de  para se espera encontrar por medio del error al acercarse al cero: 
+    $$
+    	e_a =\abs{ \frac{Xr^{(i)} - Xr^{i-1}}{ Xr^(i)} }  
+	$$.
+    El e-nésimo error asociado a los primeros valores que difieren de signo y que es el número de iteraciones para determinar la raíz buscada  con dicho error describen a continuación: 
+    
+    $$
+    	(E_a)^(n) =\abs{ \frac{Xu^{(0)} - Xl^{(0)}}{ 2^(n)} }  
+	$$.
+    
+    Número de iteraciones para un valor de raíz aceptado:
+    $$
+    	n =\log_{2}{ \frac{Xu^{(0)} - Xl^{(0)}}{(E_a)^(n) }   }
+	$$.
+    
+ \subsection{Interpolación Lineal}
+   $$
+    	x_i =x_u - { \frac{ f(x_u)(x_l-x_u)}{f(x_l) -f(x_u) } }
+	$$ Donde la interpolación lineal asume que el cero de la función está cerca del segmento más pequeño de l par de intervalos dados por: 
+    	$$ l_1 = \abs{x_u - x_i }  $$ $$  l_2  = \abs{x_l - x_i } $$
+  \subsection {Newton-Raphson}
+  	$$
+    	x_{i+1} = x_i - \frac{f(x_i}{f^{'}(x_i)}
+	$$.
+ \subsection {Secante}
+  	$$
+    	x_{i+1} = x_i - \frac{f(x_i)(x_{i-1} -x_i) }    {f(x_{i-1})-f(x_i)}
+	$$.
+    
+ \subsection {Interpolación Inversa Cuadrática}
+ 	$$    
+    R = \frac{f(x_{n-1})} {f(x_n)}
+    $$
+    $$    
+    S = \frac{x_{n-1}}{f(x_{n-2})}
+    $$
+    $$    
+    T = \frac{x_{n-2}}{f(x_{n})}
+    $$
+    $$    
+    P  =  S ( T ( R -T)(x_n-x_{n-1}) -(1-R)(x_{n-1}- x_{n-2}))
+    $$
+    $$    
+    Q = (T-1)(R-1)(S-1)
+    $$
+    $$    
+    x_{n+1} = x_{n-1} + \frac{P}{Q} , n = 2,3,...
+    $$
+ 
+    
+  \subsection{Evaluación de polinomios}
+  
+  $$
+  	f_n(x)  = a_0 +  x(a_1 + x(a_2+x(a_3 + x(... (a_{n-1} +a_n X)))))
+   $$
+   Donde 
+   $$f_n(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + .. + a_nx^n$$
+
+   \subsection{Müller}
+   		Aproximación cuadrática de Xi:
+        $$
+         f_{aprox} = a(x-x_i)^2 + b(x-x_i) + c
+        $$
+        Tomando a $ x_{i-2}, x_{i_1} , x_i$
+        
+        $$h_{i-2} = x_{i-1} - x_{i_2} $$
+        $$h_{i-1} = x_i -x_{i-1}$$
+        $$d_{i-2} = \frac{f(x_{i-1})-f(x_{i-2})}{x_{i-1}- x_{i-2}}$$
+        $$d_{i-1} = \frac{f(x_{i})-f(x_{i-1})}{x_{i}- x_{i-1}}$$
+        $$ a = \frac{d_{i-1}-d_{i-2}}{h_{i-1}-h_{i-2}}$$
+        $$ b = ah_{i-1 + d_{i-1}}$$
+        $$ c = f(x_i)$$
+        $$ x_{i+1} = x_i - \frac{2c}{b \pm (b^2 -4ac)^{\frac{1}{2}} }$$
+        
+    \subsection{Matrices}
+    Matríz simétrica: 
+    $$
+    	A = A^{T}
+        para dada entrada a_{i j} será a_{j i} 
+    $$
+     Matríz diagonal, identidad: 
+  
+    	Para \space cada \space entrada \space a{ij} \space con \space i \space =  \space j\space será \space diferente \space de \space cero. Si todos los valores difentes de cero son uno, implica que la matriz sera identidad
+        
+    \subsection{Matriz triangular superior}
+		$$a_{ij} =  \space para \space todo \space i>j $$
+	\subsection{Matriz triangular inferior}
+    	$$a_{ij} =  \space para \space todo \space i<j $$
+        
+     \subsection{Si las dimensiones de las matrices lo permiten}   
+        $$(AB)C = A(BC) \space Asociatividad$$
+        $$(A+B)C = AC + BC  \space Distributividad$$
+      
+      \subsection{Producto Externo de 2 vectores}
+      	Resultado una  matríz de  n x m donde n es la matríz del vector 1 y , es el tamaño de la
+        matríz del vector 2.
+        
+        $$
+        	vector_x \space vector_y^T,$$ \space se  \space define...\space
+            Primero \space fila[1]: \space  $$ [ vector_x(1)vector_y(i) ]$$ \space donde \space $$i = 0,1,..m-1.$$ \space  Segundo \space columna[1]: \space $$ [ vector_x(i)vector_y(1) ]$$ \space donde \space $$i = 0,1,..m-1.$$
+        
+        
+        
+        \subsection{Inversa de una matriz, propiedad}
+        $$
+        	AA^{-1} = A^{-1}A = I, \space donde I \space es \space la \space matriz \space identidad.
+        $$
+        
+        \subsection{Matriz ortogonal}
+        
+        $$A^{-1} = A^{T}$$
+        
+        \subsection{Determinante nXn, propiedades}
+        
+        $$
+        	\abs{ sA} = s^n \abs{A}
+        $$
+        
+        $$
+        	\abs{I} = 1
+        $$
+        
+        $$
+        	\abs{AB} = \abs{A} * \abs{B}
+        $$
+        
+        $$
+        	\abs{A^{-1}} = \frac{1}{\abs{A}}                       
+        $$
+        
+        $$
+        	\abs{A} = \abs{A^T}
+        $$
+        
+        \subsection {Traza de una matriz}
+        
+        $$tr(A) = \sum_{i=1}^n a_{ij}$$ 
+    
+    	\subsection{Producto Vectorial}   
+        $$
+        	vector_x * vector_y  = \sum_{i=1}^n x_i * y_i
+        $$
+        
+	\subsection{Regla de Cramer}
+    $$
+    	x_i = \frac{A + (b-a_i)(u_i)^T}{\abs{A} }
+    $$
+    Donde A es la matriz, u, un vector que para la i-ésima componente es 1, para los otros casos será cero y por último .
+    \subsection{Sustitución de hacia atrás Cramer }
+    	$$x_i = \frac{b_i^{i-1} - \sum_{j=i+1}^{n} a_{ij}^{i-1} x_j }{a_{ii}^(i-1)}
+        $$
+   \subsection{Descomposición LU}
+   $$ 
+   	a_{ij} = \sum_{k=1}^{min (i,j)} l_{lik} u_{ki} 
+   $$  
+   En donde: 
+   $$
+    a_{ij} = l_{i1}u_{1j} + l_{i2}u_{2j}+ ... + l_{ii}u_{ij} \space i<j
+   $$
+   
+   $$
+    a_{ij} = l_{i1}u_{1j} + l_{i2}u_{2j}+ ... + l_{ii}u_{jj} \space i=j
+   $$
+   $$
+    a_{ij} = l_{i1}u_{1j} + l_{i2}u_{2j}+ ... + l_{ij}u_{jj} \space i>j
+   $$
+   Considerando que, para encontrar una solución.
+   $$
+   	u_{ii} = 1 \space i = 1...n
+   $$
+   \subsection{Descomposición LU Crout }
+   $$l_{i1} = a_{i1}$$
+   \space
+   $$u_{ij} = \frac{a_{1j}}{l_{11}} $$
+   $$ i= \{ 1 ... n \} $$ 
+   $$   j =\{ 2 ...n\}$$
+   
+   \subsection{Normas Vectoriales}
+   
+   $$\abs{ \abs{ vector_{x_p} }}=
+   { \sum_{i=1}^{n} (\abs{ x_i }^p)}
+   ^{\frac{1}{p}}$$
+   
+   \subsection{Norma Frobenius }
+   $$
+   	\abs{ \abs { A } }_2 = ( \sum_{i=1}^{n} \sum_{j=1}^{n} \abs{a_{ij}}^2)^{0.5}
+   $$
+   
+   \subsection{Norma Columna Suma}
+   $$
+   \abs{ \abs { A } }_1 = max_{1 <= j <= n} \sum_{i=1} ^{n} a_{ij}
+   $$
+   
+   \subsection{Norma Fila Suma}
+   $$
+   	  \abs{ \abs { A } }_{\infty} = max_{1 <= j <= n} \sum_{j=1} ^{n} a_{ij}
+   $$
+   
+   \subsection{Norma Espectral}
+   $$
+    \abs{ \abs { A } }_2 = \sqrt[2]{\lambda_{max}}
+   $$
+   Donde:
+   $$
+   \lambda_{i} e_{i} = ( AA^T) e_{i}
+   $$
+   $$
+   \lambda_{i} \space valor \space propio
+   $$
+   $$
+    e_{i} : \space vector  \space propio
+   $$
+   
+   \subsection{Número de condición}
+   $$
+   	cond(A) = \abs{  \abs{ A}}\abs{  \abs{ A^{-1}}}
+   $$
+   
+   \subsection{Algoritmo de Thomas}
+   \subsubsection{Descomposición}
+   	$$
+    	for \space  ( k=2; k<= n ; k++)
+        \{
+        e_{k} \/= f _{k-1}
+        f_k -= e_k * g_{k-1}
+        \}
+    $$
+   \subsubsection{Sust. hacia adelante}
+   	$$
+    	for \space  ( k=2; k<= n ; k++)
+        \{
+        r_{k} \-= e_{k} k_{k-1}
+        \}
+    $$
+   \subsubsection{Sust. hacia atrás}
+   $$
+   	x_n = r_n / f_n   
+   $$
+   $$
+    	for \space  ( k=n-1; k >0  ; k--)
+        \{
+        x_k = (r_k - g_k* x_{k+1})/f_k
+        \}
+   $$
+   \subsection{Cholesky}
+   $$
+   	Si \space A = A^{T}
+   $$
+   $$
+   	vector_x^T \space y \space A vector_x > 0
+   $$
+   $$
+   	A = LL^T
+   $$
+   $$
+   l_{kk} = \sqrt[2]{a_kk - \sum_{j=i}{ k-1} I^2_{kj} }
+   $$
+   
+   $$
+   l_{ki} = \frac{k}{i} (a_{ki} -  \sum_{j=i}{ i-1} I{ij}I{kj}  ) \space i = 1,2,3,4...k-1
+   $$
+   
+   \subsection{Gauss Seidel}
+   
+   $$
+   	x_i = \frac{1}{aii}  ( b_i - \sum_{j=1 j != i }^{n-1} a_{ij}x_j )
+   $$
+   
+   \subsection{D. Valores Singulares}
+   $$
+   A = UWV^T
+   $$
+
+   	A:\space matriz\space m \space x \space n
+ 
+   	U:\space matriz \space m \space x  \space n  \space de \space columnas  \space otorgonales
+   
+   	w: \space matríz  \space diagonal \space con \space n  \space valores
+   
+   v: \space matriz \space diagonal \space n \space x \space n  \space columnas \space y \space filas ortogonales.
+	
+    
+    \subsection{Álgebra Lineal}
+    Combinación lineal de  un vector x a partir de 
+    $$
+    	U = { vectorU_1, vectorU_2, ... ,vectorU_n }
+    $$
+    
+    $$
+    	vector_x = C1 vectorU_1 + C2 vectorU_2 +  ... + Cn vectorU_n  
+    $$
+    
+    \subsection{Inversa a partir de DVS}
+    
+    $$
+    	A^{-1} = V \space diag(\frac{1}{w_j}) U^T
+    $$
+    
+    
+    \section{Interpolación Lineal de Newton}
+    Dados tres puntos de una curva: 
+    $$
+    	y_0 = f(x_0)
+    $$
+    $$
+    	y_1 = f(x_1)
+    $$
+    $$
+    	y_2 = f(x_2)
+    $$
+    
+    $$
+    	f_n(x) = b_0 + b_1(x-x_0)  + ... + b_n(x-x_0)(x-x_1) ... (x-x_n-1) 
+    $$
+    
+    $$
+    b_n = f[x_0,...x_n]
+    $$
+    
+    $$
+  		f[x_i, x_j] = \frac{ f(x_i) - f(x_j) }{ x_i - x_j}
+    $$
+    
+    $$
+  		f[x_i, x_j,x_k ] = \frac{ f[x_i,x_j]- f[x_j,x_k]}{ x_i -x_k }
+    $$
+    \section{Interpolación de Lagrange}
+     
+    $$
+    	f_n(x) = \sum_{i=0}^n L_i(x)f(x_i)
+    $$
+    
+	$$
+    	L_i(x) = \prod_{j=0 j \not = i}^n \frac{x-x_j}{x_i-x_j}
+	$$
+    
+   	$$ 
+    R_n = f [x,x_n,x_{n-},...,x_o] \prod_{i=0}^n (x-x_i)
+    $$
+    \section{Trazadores}
+    \subsection{Trazador Lineal} Para cada par de puntos $ x_i \quad y \quad  x_{i+1} $.
+    $$
+    	f(x) =f(x_i) + ( \frac{f(x_{i+1}) - f(x_i)}{x_{i+1}-x_i })(x-x_i)
+    $$
+    \subsection{Trazador Cuadrático}
+    En cada  intervalo  $ [x_{i-1},x_i] $ la función se interpola como:
+     $$
+     f_i(x) = a_{i}x^2 + b_{i}x + c_i
+     $$  
+     Los  valores de la función en los nodos deben de ser iguales:
+     $$
+     	a_{i}x_{i}^2 + b_{i}x_{i} + c_i = f(x_i)
+     $$
+     $$
+     	a_{i+1}x_{i}^2 + b_{i+1}x_{i} + c_{i+1} = f(x_i)
+     $$
+     $$
+     	a_{1}x_{0}^2 + b_{1}x_{0} + c_1= f(x_0)        
+     $$
+     $$
+     	a_{n}x_{n}^2 + b_{n}x_{n} + c_n f(x_n)
+     $$
+     Las primeras derivadas de los nodos deben de ser iguales.
+     $$
+     2a_ix_i + b_i = 2a_{i+1}x_i + b_{i+1}
+     $$
+     Albitrariamente se elige $f^{"}(x) =0$
+    
+    \subsection{Trazadores Cúbicos}
+    Cada intervalo entre dos nodos se  interpola con un polinomio: $ f_i(x)= a_ix^3 + b_ix^2 + c_ix +d_i$
+    
+    Las funciones en los nodos comunes deben de dar el mismo resultado.
+$$
+ f_i(x_i ) = f(x_i) \quad f_{i+1}(x_i) = f(x_i)
+$$
+La función debe de estár definida en los puntos extremos. 
+$$
+	f_1(x_0) = f(x_0)  \quad f_n(x_n) = f(x_n).
+$$
+Las primeras derivadas en los nodos interiores son iguales.
+$$
+	f_i^{\prime }(x_i) = f_{i+1}^{\prime}(x_i)
+$$
+Las segundas derivadas en los nodos interiores son iguales.
+$$
+	f_i^{\prime \prime }(x_i) = f_{i+1}^{\prime \prime}(x_i)
+$$
+ Las segundas derivadas en los extremos es cero.
+ 
+ \subsection{Interpolación Bilineal} Tomo mando como referencia los  puntos $ f(x_1,y_1)\quad f(x_1,y_2) \quad f(x_2,y_1) \quad f(x_2, y_2)$.
+ 
+ Se estima interpolación lineal en $x$ con $y = y_1$ fijo.
+ $$ f(x_i,y_1) = \frac{x_i -x_2}{x_1 - x_2}f(x_1,y_1) + \frac{x_i -x_1}{x_2 -x_1}f(x_2,x_1)$$
+ Se estima interpolación lineal en $x$ con $y = y_2$ fijo.
+ $$ f(x_i,y_2) = \frac{x_i -x_2}{x_1 - x_2}f(x_1,y_2) + \frac{x_i -x_1}{x_2 -x_1}f(x_2,x_2)$$
+ Entre ambos puntos interpolados, se aplica interpolación lineal en $y$.
+  $$ f(x_i,y_i) = \frac{y_i -y_2}{y_1 - y_2}f(x_i,y_1) + \frac{y_i -y_1}{y_2 -y_1}f(x_i,y_2)$$
+  \section{Regresión}
+  \subsection{Regresión Lineal} Basado en una aproximación lineal $y_i = a_0 + a_1x_i + e_i$,con el $e_i$ el error del modelo y la i-ésima observación. Tomando un conjunto de observaciones: $(x_i),y_i \quad i = 1 ... n$ 
+  	$$
+    \left( 
+    	\begin{array}{cc}
+ 		n & \sum_{i=1}^n x_i \\ 
+ 		\sum_{i=1}^n x_i & \sum_{i=1}^n x_i^2 \\
+		\end{array} 
+    \right) 
+    \left( 
+    	\begin{array}{c}
+ 		 a_0\\ 
+ 		 a_1\\
+		\end{array} 
+    \right) =
+     \left( 
+    	\begin{array}{c}
+ 		 \sum_{i=1}^n y_i\\ 
+ 		 \sum_{i=1}^n x_iy_i\\
+		\end{array} 
+    \right)
+  $$ El error estándar de la estimación de línea de regresión es: 
+  $$ s_{y\/x} = \sqrt[]{\frac{S_r}{n-2}} \quad S_r = \sum_{i=1}^{n}e_i^2 \quad e_i = (y_i - ( a_0 + a_1x_i)) $$
+  
+  \subsection{Linealización Exponencial}
+  Si los  datos siguen una tendencia exponencial: $y = \alpha  e^{\beta x}$.
+  Se aplica la siguiente linealización $\ln{y} = \ln{\alpha} + \beta x$.
+  \subsection{Linealización Razón de Crecimiento}
+  Si los  datos siguen una tendencia de razón de crecimiento: $y = \alpha  \frac{x}{\beta + x}$.
+  Se aplica la siguiente linealización $\frac{1}{y} = \frac{\beta}{\alpha x} + \frac{1}{\alpha}$.
+  \subsection{Ajuste cuadrático}
+  Ajustando un polinomio cuadrático de segundo grado $ y = a_0 + a_1x + a_2x_2 + e $. 
+  El error es: $ S_r = \sum_{i=1}^n (y_i - a_0 -a_1x_i -a_2x_i²)^2$.
+  El sistema para encontrar las constantes sigue a continuación: 
+  $$
+    \left( 
+    	\begin{array}{ccc}
+ 		n                  &  \sum_{i=1}^n x_i    &  \sum_{i=1}^n x_i^2 \\
+        \sum_{i=1}^n x_i   &  \sum_{i=1}^n x_i^2  &  \sum_{i=1}^n x_i^3 \\
+        \sum_{i=1}^n x_i^2 &  \sum_{i=1}^n x_i^3  &  \sum_{i=1}^n x_i^4 \\
+		\end{array} 
+    \right) 
+    \left( 
+    	\begin{array}{c}
+ 		 a_0\\ 
+ 		 a_1\\
+         a_2\\
+		\end{array} 
+    \right) =
+     \left( 
+    	\begin{array}{c}
+ 		 \sum_{i=1}^n y_i\\ 
+ 		 \sum_{i=1}^n x_iy_i\\
+         \sum_{i=1}^n x_i^2y_i\\
+		\end{array} 
+    \right)
+  $$ Para obtener el error asociados de orden m y n la candidad de datos, la desviación estándar es: 
+  $$
+  	S_{x\/x} = \sqrt[]{\frac{S_r}{n-(m+1)}}.
+  $$
+  El coeficiente de determinación:
+  $$
+  	r_2 = \frac{S_t-S_r}{S_t}
+  $$
+  Varianza de datos: 
+  $$
+  S_t = \sum (y_i -\overline{y})^2 \quad \overline{y} = \frac{1}{n}\sum y_i
+  $$
+  
+
+\end{multicols}
+
+  \subsection{Regresión Lineal Múltiple}
+  Generalización para variables independientes: $ y = a_0 + a_1x_1 + a_2x_2 + e$
+  El error es el siguiente: 
+  $$
+  S_r = \sum_{i=1}^n (y_i-a_0 -a_1x_{1i} -a_2x_{2i})^2
+  $$
+  Para obtener los valores de las constantes 
+  $$
+    \left( 
+    	\begin{array}{ccc}
+ 		n                  &  \sum_{i=1}^n x_{1i}    &   \sum_{i=1}^n x_{2i}\\
+        \sum_{i=1}^n x_{1i}   & \sum_{i=1}^n x_{1i}^2 &  \sum_{i=1}^n x_{1i}x_{2i}\\
+        \sum_{i=1}^n x_{2i}   &  \sum_{i=1}^n x_{1i}x_{2i} & \sum_{i=1}^n x_{2i}^2\\
+		\end{array} 
+    \right) 
+    \left( 
+    	\begin{array}{c}
+ 		 a_0\\ 
+ 		 a_1\\
+         a_2\\
+		\end{array} 
+    \right) =
+     \left( 
+    	\begin{array}{c}
+ 		 \sum_{i=1}^n y_i\\ 
+ 		 \sum_{i=1}^n x_{1i}y_i\\
+         \sum_{i=1}^n x_{2i}y_i\\
+		\end{array} 
+    \right)
+  $$
+  
+ \begin{multicols}{2}
+ 	\subsection {Linealización en múltiples dimensiones}
+    Para la siguiente relación: $y = a_0x_1^{a_1}x_2^{a_2}x_3^{a_3}\ldots x_m^{a_m}  $
+    Aplicando logaritmo a la ecuación:
+    $$
+    	\ln{y} = \ln{a_0} + a_1\ln{x_1} +\ldots +  a_m\ln{x_m} 
+    $$
+    
+    \section {Integración numérica }
+    \subsection{Regla del trapecio}
+    Datos dos puntos $ a,f(a) \quad y \quad b,f(b)$. 
+    Se define la regla del trapecio:
+    	$$
+        	f_1(x) = f(a) + \frac{f(b)-f(a)}{b-a} (x-a)
+        $$
+    	$$I =  \int_a^b f_1(x)dx = (b-a) \frac{f(a)+ f(b)}{2}$$
+      \subsection{Fórmula hacia adelante de Newton-Gregory}
+      Se asume una secuancia de $n+1$ datos equiespaciados.
+    $$
+    	x_0, \quad x_1 = x_0 +h, \ldots, \quad x_n = nh
+    $$
+    En general, utilizando la n-ésima diferencia dividida hacia adelante: 
+    $$
+    f[x_0,x_1, \ldots, ..., x_n] = \frac{\delta^n f(x_0)}{n!h^n}
+    $$
+ \end{multicols} 
+ 	\subsection{Regla del Trapecio múltiple}
+    Se utilizan $ n +1  $ puntos  $ x_0, x_1, \ldots, x_n$ equiespaciados con distancia $ h = \frac{b-a}{n}$
+    Si $a = x_0 $ y $b= x_n $ la integral completa es: 
+    	$$I = \int_{x_0}^{x_1} f(x)dx + \int_{x_1}^{x_2} f(x)dx + \ldots +  \int_{x_{n-1}}^{x_{n}} f(x)dx $$ 
+        $$ I = \sum_{i=1}^{n} \int_{x_{i-1}}^{x_i} f(x)dx  $$ 
+        Utilizando la regla del trapecio: 
+        $$
+        	I = \sum_{i=1}^{n} h\frac{f(x_i -1) + f(x_i)}{2}
+        $$
+        $$
+        	I = (b-a) \frac{1}{2n} \left( f(x_0) + 2\sum_{i=1}^{n-1} f(x_i) + f(x_n)\right)
+        $$
+        
+        
+        \begin{multicols}{2}
+        	\subsection{Simpson 1/3}
+            $$I = \int_a^b f(x)dx \approx \int_a^b f_2(x)dx $$
+            Basado en un polinomio de grado 2, de Lagrange.
+           $$ I \approx (b-a)\frac{1}{6} [ f(x_0) + 4f(x_1) +f(x_2)]$$
+           
+           \subsection{Simpson 3/8}
+            $$I = \int_a^b f(x)dx \approx \int_a^b f_3(x)dx $$
+            Basado en un polinomio de grado 2, de Lagrange.
+           $$ I \approx (b-a)\frac{1}{8} [ f(x_0) + 3f(x_1)+ 3f(x_2)+ f(x_3)]$$
+           \subsection{Integrales Impropias}
+           \subsubsection{Límites infinitos}
+           	Si la función decrece hacia cero más rápido que  $ \frac{1}{x^2}$, con $ x \rightarrow \infty$ entonces, con $  t =  \frac{1}{x} $ y $ dt = \frac{-dx}{x²}$ se tiene.
+            $$
+            \int_a^b f(x)dx = \int_{1\/b}^{1\/a} \frac{1}{t²}f(\frac{1}{t})dt
+            $$
+            Con $ab>0$.
+           \subsubsection{Regla del Valor medio Extendida}
+           No requiere la evaluación en los extremos del intervalo, en donde los integrandos se  pueden definir.
+           $$
+           \int_a^b f(x)dx \approx (b-a)\frac{1}{n} \sum_{i=1}^n f(a + h[i - \frac{1}{2}])
+           $$
+           \subsection{Diferencias divididas}
+           	\subsubsection{Adelante}
+            $$
+            	f^\prime(x_i) = \frac{f(x_{i+1}) -f(x_i)}{h} + O(h)
+            $$
+            $$
+            	f^\prime(x_i) = \frac{-f(x_{i+2}) + 4f(x_{i+1}) -3f(x_i)}{2h} + O(h^2)
+            $$
+            
+            $$
+            	f^{\prime\prime} (x_i) = \frac{f(x_{i+2}) -2f(x_{i+1}) +f(x_i)}{h^2} + O(h)
+            $$
+            
+            $$
+            	f^{\prime\prime}(x_i) = \frac{-f(x_{i+3}) + 4f(x_{i+2}) -5f(x_{i+1}) +2f(x_i)}{h^2} + O(h²)
+            $$
+            \subsubsection{Atrás}
+             $$
+            	f^\prime(x_i) = \frac{f(x_{i}) -f(x_{i-1})}{h} + O(h)
+            $$
+            $$
+            	f^\prime(x_i) = \frac{3f(x_i) -4f(x_{i-1}) +f(x_{i-2})}{2h} + O(h^2)
+            $$
+            
+            $$
+            	f^{\prime\prime} (x_i) = \frac{f(x_{i}) -2f(x_{i-1}) +f(x_{i-2})}{h^2} + O(h)
+            $$
+            
+            $$
+            	f^{\prime\prime}(x_i) = \frac{2f(x_{i})-5f(x_{i-1}) -4f(x_{i-2}) -f(x_{i-3})}{h^2} + O(h²)
+            $$
+            
+        \end{multicols}
+        
+        \subsubsection{Centradas}
+              $$
+            	f^\prime(x_i) = \frac{f(x_{i+1}) -f(x_{i-1})}{2h} + O(h^2)
+            $$
+            $$
+            	f^\prime(x_i) = \frac{-f(x_[i+2])+8f(x_{i1+1}) -8f(x_{i-1})+f(x_{i-2})}{12h} + O(h^4)
+            $$
+            
+            $$
+            	f^{\prime\prime} (x_i) = \frac{f(x_{i+1}) -2f(x_{i}) +f(x_{i-1})}{h^2} + O(h^2)
+            $$
+            
+            $$f^{\prime\prime}(x_i) = \frac{-f(x_{i+2})-16f(x_{i+1}) -30f(x_{i}) +16f(x_{i-1})-f(x_{i-2})}{12h^2} + O(h^4)$$
+        \subsection{Derivadas con datos irregularmente separados}    
+            $$f^{\prime}(x) =f(x_{i-1}) \frac{2x -x_i-x_{i+1}}{(x_{i-1} -x_i)(x_{i-1}-x_{i+1})} +
+            f(x_{i}) \frac{2x -x_{i-1}-x_{i}}{(x_{i-1} -x_i)(x_{i}-x_{i+1})}+
+            f(x_{i+1}) \frac{2x -x_{i-1}-x_{i}}{(x_{i+1} -x_{i-1})(x_{i+1}-x_{i})}
+            $$
+            \subsection{Runge-Kutta}
+            $\frac{dy}{dx} = f(x,y)$ Estructura de la solución:
+            $$
+            y_{i+1} = y_i + \phi  \times h 
+            $$
+            $$
+            \phi (x_i,y_i,h) = a_1k_1 + \ldots + a_nk_n
+            $$
+            $$
+            k_n = f(x_i+p_{n-1}h, y_i +q_{n-1,1}k_1h + q_{n-1,2}k_2h + \ldots + q_{n-1,n-1}k_nh)
+            $$
+            \subsubsection{RK tercer orden}
+            $$
+             y_{i+1} = y_i + \frac{1}{6}(k_1 + 4k_2 +k_3)h
+            $$
+      
+            $$
+            	f(x_i + \frac{1}{2}h, y_I + \frac{1}{2}k_1h )
+            $$
+             \subsubsection{RK cuarto orden}
+            $$
+            y_{i+1} = y_i + \frac{1}{6} (k_1 +2k_2 +2k_3 +k_4)h
+            $$
+             \subsubsection{RK cuarto orden}
+            $$
+            y_{i+1} = y_i + \frac{1}{90} (7k_1 +32k_2 +14k_4 +32k_5 + 7k_6)h $$
+            \subsubsection{Runge-Kutta Fehlberg 4 orden}
+            $$
+            	 y_{i+1} = y_i +  (\frac{37}{378}k_1 +\frac{250}{621}k_3 +\frac{125}{594}k_4 +\frac{512}{1771}k_6 )h
+            $$
+            \subsubsection{Runge-Kutta Fehlberg 5 orden}
+            $$y_{i+1} = y_i +  (\frac{37}{378}k_1 +\frac{2825}{27648}k_1 +\frac{18575}{43384}k_3 +\frac{13525}{55296}k_4 + \frac{277}{14336}k_5 + \frac{1}{4}k_6 )h$$
+            \begin{multicols}{2}
+            	\section{Método de Heun}
+                $$
+                y^0_{i+1,u} = y_{i-1}^m + f(x_i,y_i^m)2h
+                $$
+                $$
+                 y^j_{i+1} = y_i^m + \frac{f(x_i,y_i^m) +f(x_{i+1},y_{i+1}^{j-1})h}{2}
+                $$
+                Para $ j= 1\ldots m$
+                
+                \section{Adams -Bashrorth}
+                $$
+                y_[i+1] = y_i + h\sum_{k=0}^{n-1} \beta_kf_{i-k} + O(h^{n+1})
+                $$
+                \section{Adams -Moulton}
+                 $$ y_[i+1] = y_i + h\sum_{k=0}^{n-1} \beta_kf_{i+1-k} + O(h^{n+1})  $$
+                 \section{Adams -Milne}
+                 $$
+                 	 y_{i+1}^{0} = y_{i-3}^{m} + \frac{4h}{3}( 2-f_i^m -f_{i-1}^m -2f_{i-2}^m )
+                 $$
+                 $$
+                 	 y_{i+1}^{j} = y_{i-1}^{m} + \frac{h}{3}( f_{i-1}^m +4f_{i}^m +f_{i-1}^{j-1} )
+                 $$
+                 
+                 \section{Adams de Cuarto Orden}
+                 $$
+                 	y_{i+1}^0 = y_i^m + h(\frac{55}{24}f_i^m -\frac{59}{24}f_{i-1}^{m} + \frac{37}{24} f_{i-2}^{m} - \frac{9}{24}f_{i-3}^{m} )
+                 $$
+                 
+                  $$
+                 	y_{i+1}^j = y_i^m + h(\frac{55}{24}f_i^m -\frac{59}{24}f_{i-1}^{m} + \frac{37}{24}f_{i-2}^{m} - \frac{9}{24}f_{i-3}^{m} )
+                 $$
+            \end{multicols} 
